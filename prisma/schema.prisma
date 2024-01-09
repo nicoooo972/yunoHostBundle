@@ -10,22 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Application {
+  id       Int      @id @default(autoincrement())
+  appName  String
+  domain   String
+  password String
+  path     String
+  admin    String
+  bundleId Int
+  bundle   Bundle   @relation(fields: [bundleId], references: [id])
+}
+
 model Bundle {
   id Int @id @default(autoincrement())
   title String @unique
   description String?
-  nbApp Int
   applications Application[]
-}
-
-model Application {
-  id Int @id @default(autoincrement())
-  title String @unique
-  description String?
-  logo String?
-  size Int
-  version Int
-  bundle Bundle @relation(fields: [bundleId], references: [id])
-
-  bundleId Int
 }
