@@ -1,0 +1,11 @@
+.cartes-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.custom-card-container {
+    width: 20rem;
+    height: 20rem;
+}
