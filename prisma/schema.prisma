@@ -25,7 +25,6 @@ model Application {
   logo String?
   size Int
   version Int
-
   bundle Bundle @relation(fields: [bundleId], references: [id])
 
   bundleId Int
