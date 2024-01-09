@@ -1,0 +1,25 @@
+.cartes-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: white;
+
+}
+
+.container-style {
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+
+.custom-card-container {
+    margin-top: 20px;
+    border: solid;
+    width: 23rem;
+    height: 23rem;
+}
