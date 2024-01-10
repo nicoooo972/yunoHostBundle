@@ -4,14 +4,14 @@ import { Card, CardContent, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import './Bundles.css';
 
-interface BundlesProps {
+interface Bundles {
     nom: string;
     description: string;
     lien?: string;
     onChoisir: () => void;
 }
 
-const Bundles: React.FC<BundlesProps> = ({ nom, description, lien, onChoisir }) => {
+const Bundles: React.FC<Bundles> = ({ nom, description, lien, onChoisir }) => {
     return (
         <Card className="bundles-card">
             <CardContent>

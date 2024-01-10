@@ -13,7 +13,7 @@ import {
     DialogActions,
 } from '@mui/material';
 
-interface CarteSimpleProps {
+interface CarteSimple {
     title: string;
     description: string;
     imageUrl: string;
@@ -22,7 +22,7 @@ interface CarteSimpleProps {
     listItems: string[];
 }
 
-const CarteSimple: React.FC<CarteSimpleProps> = ({ title, description, imageUrl, isSelected, onToggle, listItems }) => {
+const CarteSimple: React.FC<CarteSimple> = ({ title, description, imageUrl, isSelected, onToggle, listItems }) => {
     const [openDialog, setOpenDialog] = useState<boolean>(false);
 
     const handleButtonClick = () => {
