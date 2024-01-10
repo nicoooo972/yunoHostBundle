@@ -1,5 +1,6 @@
-.custom-card-size {
-
-    width: 600px;
-    height: 600px;
+.custom-card-container {
+    margin-top: 20px;
+    border: solid;
+    width: 25rem;
+    height: 22rem;
 }
