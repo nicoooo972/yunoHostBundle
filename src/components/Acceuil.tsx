@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Button, Typography, Container } from '@mui/material';
 import logoImage from '../assets/logoBlanc.png';
 
-const Accueil: React.FC = () => {
+interface AccueilProps {
+    scrollToCartes: () => void;
+}
+
+const Accueil: React.FC<AccueilProps> = ({ scrollToCartes }) => {
     const [randomColor, setRandomColor] = useState<string>('white'); // Couleur initiale
     const colors = ['#C6F', '#4285f4', '#0f9d58', '#f4b400'];
     useEffect(() => {
@@ -13,6 +17,7 @@ const Accueil: React.FC = () => {
     }, []);
 
     const containerStyle: React.CSSProperties = {
+
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -57,7 +62,7 @@ const Accueil: React.FC = () => {
                 Vous voulez un accès hors ligne à vos données?
             </Typography>
 
-            <Button variant="contained" style={buttonStyle}>
+            <Button variant="contained" style={buttonStyle} onClick={scrollToCartes}>
                 Commencez maintenant
             </Button>
         </Container>

@@ -1,0 +1,14 @@
+.bundles-card {
+    height: 100%;
+    width: 300px;
+
+}
+
+.bundles-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.bundles-button {
+    margin-top: 10px;
+}

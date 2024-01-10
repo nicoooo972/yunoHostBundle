@@ -17,9 +17,20 @@ h1 {
 
 
 
-.custom-card-container {
-    margin-top: 20px;
-    border: solid;
-    width: 23rem;
-    height: 23rem;
+
+
+.launch-bundles-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.launch-bundles-button:hover {
+    background-color: #2980b9;
 }

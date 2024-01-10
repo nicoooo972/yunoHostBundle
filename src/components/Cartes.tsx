@@ -1,81 +1,53 @@
-import React from 'react';
+// Cartes.tsx
+import React, { useState } from 'react';
 import CarteSimple from './CarteSimple';
+import Install from './Install';
 import './Cartes.css';
-
+import './CarteSimple.css';
+import { cartesData } from '../data/Data';
 
 const Cartes: React.FC = () => {
-    return (
+    const [selectedCards, setSelectedCards] = useState<string[]>([]);
+    const [showInstall, setShowInstall] = useState(false);
 
+    const handleCardToggle = (title: string) => {
+        const isSelected = selectedCards.includes(title);
+        if (isSelected) {
+            setSelectedCards(selectedCards.filter(cardTitle => cardTitle !== title));
+        } else {
+            setSelectedCards([...selectedCards, title]);
+        }
+    };
+
+    const handleLaunchBundles = () => {
+        console.log('Bundles sélectionnés :', selectedCards);
+        setShowInstall(true);
+    };
+
+    return (
         <div className="container-style">
             <h1>Choisissez les Bundles que vous voulez </h1>
 
             <div className="cartes-container">
-                <CarteSimple
-                    title="Fichiers"
-                    description="Nextcloud 
-                Syncthing -> mode trou noir (:question:)"
-                    imageUrl="./logo.png"
-
-                />
-
-
-                <CarteSimple
-                    title="Contacts, agenda
-                "
-                    description="Nextcloud"
-                    imageUrl="./logo.png"
-                />
-
-                <CarteSimple
-                    title="Mots de passe
-                "
-                    description="Vaultwarden
-                Keepass"
-                    imageUrl="./logo.png"
-                />
-
-                <CarteSimple
-                    title="Navigateur"
-                    description="syncserver-rs"
-                    imageUrl="./logo.png"
-                />
-
-                <CarteSimple
-                    title="Paperasserie"
-                    description="Paperless-ngx
-                SignaturePDF
-                (finances) Kresus , (Firefly-III , Actual )"
-                    imageUrl="./logo.png"
-                />
-
-                <CarteSimple
-                    title="Lectures"
-                    description="BookWyrm"
-                    imageUrl="./logo.png"
-
-                />
-
-                <CarteSimple
-                    title="Musique"
-                    description="Airsonic
-                Navidrome
-                Jellyfin -> à tester
-                Backup (:question: :question: :question:)
-                entre clic borg / de ton périphérique vers clic, backup des backup <= bouton téléchargement"
-                    imageUrl="./logo.png"
-                />
-
-
-
-
+                {cartesData.map((bundle, index) => (
+                    <CarteSimple
+                        key={index}
+                        title={bundle.title}
+                        description={bundle.description}
+                        imageUrl={bundle.imageUrl}
+                        isSelected={selectedCards.includes(bundle.title)}
+                        onToggle={() => handleCardToggle(bundle.title)}
+                        listItems={bundle.items}
+                    />
+                ))}
             </div>
+
             <h1>Confirmez votre choix </h1>
-            <br></br>
-            <button>Je lance mes Bundles</button>
-
+            <button className="launch-bundles-button" onClick={handleLaunchBundles}>
+                Je lance mes Bundles
+            </button>
+            <Install open={showInstall} onClose={() => setShowInstall(false)} />
         </div>
-
-
     );
 };
 

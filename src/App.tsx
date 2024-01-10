@@ -1,18 +1,22 @@
+// App.js
 import React from 'react';
-import Accueil from './components/Acceuil';
-import Cartes from './components/Cartes';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BudlesPage from './pages/BundlesPage';
+import Synchro from './pages/SynchroBundlePage';
 
 const App: React.FC = () => {
   return (
-    <div>
+    <Router>
       <div>
-        <Accueil />
-        <Cartes />
+
+
+        <Routes>
+          <Route path="/" element={<BudlesPage />} />
+          <Route path="/Synchro" element={<Synchro />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 };
 
 export default App;
-
-
