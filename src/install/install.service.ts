@@ -14,7 +14,7 @@ export class InstallService {
       admin: 'nicoco',
     },
     {
-      appName: 'baikal',
+      appName: 'vaultwarden',
       domain: 'dcm1tlg1.nohost.me',
       password: '12345azerty',
       path: '/path2',

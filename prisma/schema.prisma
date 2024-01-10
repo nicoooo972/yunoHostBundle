@@ -11,19 +11,22 @@ datasource db {
 }
 
 model Application {
-  id       Int      @id @default(autoincrement())
-  appName  String
-  domain   String
-  password String
-  path     String
-  admin    String
-  bundleId Int
-  bundle   Bundle   @relation(fields: [bundleId], references: [id])
+  id          Int    @id @default(autoincrement())
+  appName     String
+  description String
+  version     String
+  size        Float
+  domain      String
+  password    String
+  path        String
+  admin       String
+  bundleId    Int
+  bundle      Bundle @relation(fields: [bundleId], references: [id])
 }
 
 model Bundle {
-  id Int @id @default(autoincrement())
-  title String @unique
-  description String?
+  id           Int           @id @default(autoincrement())
+  title        String        @unique
+  description  String?
   applications Application[]
 }
