@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 interface FormData {
   admins: string[];
@@ -12,20 +12,46 @@ const App: React.FC = () => {
 
   const [admins, setAdmins] = useState<string[]>([]);
   const [domains, setDomains] = useState<string[]>([]);
-  const [password, setPassword] = useState<string>("");
+  const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
     // Récupération des noms et des domaines de la route get
-    fetch("http://localhost:3000/install/users-admin")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        setAdmins(data.admins);
-      });
+    const getAdminsData = async () => {
+      try {
+        const response = await fetch(
+          'http://localhost:3000/install/users-admin',
+        );
+        const data = await response.json();
+
+        setAdmins(Object.keys(data.admins.users));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    getAdminsData(); // Call  the fetchData function directly
   }, []);
 
-  const onSubmit = (data: { admins: string[]; domains: string[]; password: string }) => {
-    // Faire quelque chose avec les données du formulaire
+  useEffect(() => {
+    const getDomainsData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/install/domain');
+        const data = await response.json();
+        console.log(data);
+        setDomains(data.domain.domains);
+      } catch (error) {
+        console.error('Error fetching domains:', error);
+      }
+    };
+    console.log(domains);
+
+    getDomainsData();
+  }, []);
+
+  const onSubmit = (data: {
+    admins: string[];
+    domains: string[];
+    password: string;
+  }) => {
     console.log(data);
   };
 
@@ -35,13 +61,10 @@ const App: React.FC = () => {
 
       <div>
         <label htmlFor="admins">Admins</label>
-        <select
-          id="admins"
-          {...register("admins")}
-        >
-          {admins.map((users, index) => (
-            <option key={index} value={users}>
-              {users}
+        <select id="admins" {...register('admins')}>
+          {admins.map((user, index) => (
+            <option key={index} value={user}>
+              {user}
             </option>
           ))}
         </select>
@@ -49,12 +72,13 @@ const App: React.FC = () => {
 
       <div>
         <label htmlFor="domains">Noms de domaine</label>
-        <input
-          type="text"
-          id="domains"
-          {...register("domains")}
-          placeholder="Entrez les noms de domaine"
-        />
+        <select id="domains" {...register('domains')}>
+          {domains.map((main, index) => (
+            <option key={index} value={main}>
+              {main}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
@@ -62,7 +86,7 @@ const App: React.FC = () => {
         <input
           type="password"
           id="password"
-          {...register("password")}
+          {...register('password')}
           placeholder="Entrez le mot de passe"
         />
       </div>

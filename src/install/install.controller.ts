@@ -23,8 +23,8 @@ export class InstallController {
   @Get('users-admin')
   async getAdmin(@Res() res: Response): Promise<any> {
     try {
-      const admin = await this.install.getAdmin();
-      res.status(200).json({ status: 200, message: 'OK', admin });
+      const admins = await this.install.getAdmin();
+      res.status(200).json({ status: 200, message: 'OK', admins });
     } catch (error) {
       res.status(500).json({
         status: 500,

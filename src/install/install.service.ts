@@ -9,9 +9,9 @@ export class InstallService {
   async installApplication(datas: any[]): Promise<void> {
     try {
       for (const data of datas) {
-        const { name, domain, admin, password } = data;
+        const { name, domain, admins, password } = data;
 
-        const command = `ssh nicoco@dcm1tlg1.nohost.me sudo -S yunohost app install ${name} --args '${domain}&path=/${name}&init_main_permission=admins&password=${password}&admin=${admin}'"`;
+        const command = `ssh nicoco@dcm1tlg1.nohost.me sudo -S yunohost app install ${name} --args '${domain}&path=/${name}&init_main_permission=admins&password=${password}&admin=${admins}'"`;
 
         const childProcess = spawn('bash', ['-c', command], { shell: true });
 
