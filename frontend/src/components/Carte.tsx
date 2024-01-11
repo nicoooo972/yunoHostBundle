@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CarteSimple.css';
+import './Carte.css';
 
 import {
     Card,
@@ -22,7 +22,7 @@ interface CarteSimple {
     listItems: string[];
 }
 
-const CarteSimple: React.FC<CarteSimple> = ({ title, description, imageUrl, isSelected, onToggle, listItems }) => {
+const CarteSimple: React.FC<CarteSimple> = ({ title, description, imageUrl, isSelected, onToggle }) => {
     const [openDialog, setOpenDialog] = useState<boolean>(false);
 
     const handleButtonClick = () => {

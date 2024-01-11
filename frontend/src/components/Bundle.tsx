@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import './Bundles.css';
+import './Bundle.css';
 
 interface Bundles {
     nom: string;
@@ -28,7 +28,7 @@ const Bundles: React.FC<Bundles> = ({ nom, description, lien, onChoisir }) => {
                         Choisir
                     </Button>
                 ) : (
-                    <Button className="bundles-button" variant="contained" onClick={onChoisir}>
+                    <Button className="bundles-button" variant="contained" onClick={onChoisir} style={{ marginTop: '8%' }}>
                         Choisir
                     </Button>
                 )}

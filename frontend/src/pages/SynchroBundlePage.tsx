@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import Accueil from '../components/Acceuil';
-import Cartes from '../components/Cartes';
+import Accueil from '../components/AcceuilSynchro';
+import Cartes from '../components/ListeCartes';
 import './SynchroBundlePage.css';
 
 const Synchro: React.FC = () => {

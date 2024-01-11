@@ -17,7 +17,6 @@ const Accueil: React.FC<AccueilProps> = ({ scrollToCartes }) => {
     }, []);
 
     const containerStyle: React.CSSProperties = {
-
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

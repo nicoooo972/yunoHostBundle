@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import CarteSimple from './CarteSimple';
-import Install from './Install';
-import './Cartes.css';
-import './CarteSimple.css';
+import CarteSimple from './Carte';
+import Install from './InstallPage';
+import './ListeCartes.css';
+import './Carte.css';
 import { cartesData } from '../data/Data';
 
 const Cartes: React.FC = () => {
