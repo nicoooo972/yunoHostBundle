@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BudlesPage from './pages/BundlesPage';
@@ -8,8 +7,6 @@ const App: React.FC = () => {
   return (
     <Router>
       <div>
-
-
         <Routes>
           <Route path="/" element={<BudlesPage />} />
           <Route path="/Synchro" element={<Synchro />} />

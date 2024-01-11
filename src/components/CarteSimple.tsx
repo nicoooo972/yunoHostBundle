@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './CarteSimple.css';
 
 import {
@@ -13,7 +13,7 @@ import {
     DialogActions,
 } from '@mui/material';
 
-interface CarteSimpleProps {
+interface CarteSimple {
     title: string;
     description: string;
     imageUrl: string;
@@ -22,13 +22,8 @@ interface CarteSimpleProps {
     listItems: string[];
 }
 
-const CarteSimple: React.FC<CarteSimpleProps> = ({ title, description, imageUrl, isSelected, onToggle, listItems }) => {
+const CarteSimple: React.FC<CarteSimple> = ({ title, description, imageUrl, isSelected, onToggle, listItems }) => {
     const [openDialog, setOpenDialog] = useState<boolean>(false);
-    const [activeItems, setActiveItems] = useState<string[]>([]);
-
-    useEffect(() => {
-        setActiveItems(listItems);
-    }, [listItems]);
 
     const handleButtonClick = () => {
         setOpenDialog(true);
@@ -36,15 +31,6 @@ const CarteSimple: React.FC<CarteSimpleProps> = ({ title, description, imageUrl,
 
     const handleCloseDialog = () => {
         setOpenDialog(false);
-    };
-
-    const handleToggleItem = (item: string) => {
-        const isItemActive = activeItems.includes(item);
-        if (isItemActive) {
-            setActiveItems(activeItems.filter(activeItem => activeItem !== item));
-        } else {
-            setActiveItems([...activeItems, item]);
-        }
     };
 
     return (
@@ -58,37 +44,26 @@ const CarteSimple: React.FC<CarteSimpleProps> = ({ title, description, imageUrl,
                     <Typography variant="body2" color="text.secondary">
                         {description}
                     </Typography>
-                    <Button variant="contained" color="primary" onClick={onToggle} style={{ marginTop: '15%' }}>
+                    <Button variant="contained" color="primary" onClick={onToggle} style={{ marginTop: '5%' }}>
                         {isSelected ? 'Désélectionner' : 'Sélectionner'}
                     </Button>
-                    <Button variant="contained" color="primary" onClick={handleButtonClick} style={{ marginTop: '15%', marginLeft: '3%' }}>
+                    <Button variant="contained" color="primary" onClick={handleButtonClick} style={{ marginTop: '5%', marginLeft: '3%' }}>
                         En savoir plus
                     </Button>
                 </CardContent>
             </Card>
 
-            <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth={true}
-                maxWidth="md"
-            >
+            <Dialog open={openDialog} onClose={handleCloseDialog} fullWidth={true} maxWidth="md">
                 <DialogTitle>{title}</DialogTitle>
                 <DialogContent>
-                    <ul style={{ listStyleType: 'none', padding: 0 }}>
-                        {listItems.map(item => (
-                            <li key={item} style={{ marginBottom: '5%', fontWeight: 'bold' }}>
-                                {item}
-                                <Button
-                                    variant={activeItems.includes(item) ? "contained" : "outlined"}
-                                    color={activeItems.includes(item) ? "secondary" : "primary"}
-                                    onClick={() => handleToggleItem(item)}
-                                    style={{ position: 'absolute', left: '85%' }}
-
-
-                                >
-                                    {activeItems.includes(item) ? "Désactiver" : "Activer"}
-                                </Button>
-                            </li>
-                        ))}
-                    </ul>
+                    <div>
+                        <p>Nom: Nom statique</p>
+                        <p>Description: Description statique</p>
+                        <p>Catégorie: Catégorie statique</p>
+                        <p>Sous-catégorie: Sous-catégorie statique</p>
+                        <p>Taille: Taille statique</p>
+                        <p>Version: Version statique</p>
+                    </div>
                 </DialogContent>
                 <DialogActions style={{ justifyContent: 'flex-start' }}>
                     <Button onClick={handleCloseDialog} color="primary">
@@ -96,7 +71,7 @@ const CarteSimple: React.FC<CarteSimpleProps> = ({ title, description, imageUrl,
                     </Button>
                 </DialogActions>
             </Dialog>
-        </div >
+        </div>
     );
 };
 

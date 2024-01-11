@@ -1,11 +1,14 @@
 export const cartesData = [
-    { title: 'Fichiers', description: 'Nextcloud', imageUrl: './logo.png', items: ['Nextcloud'] },
-    { title: 'Contacts, agenda', description: 'Nextcloud', imageUrl: './logo.png', items: ['Nextcloud'] },
-    { title: 'Mots de passe', description: 'Vaultwarden Keepass', imageUrl: './logo.png', items: ['Vaultwarden', 'Keepass'] },
-    { title: 'Navigateur', description: 'syncserver-rs', imageUrl: './logo.png', items: ['syncserver-rs'] },
-    { title: 'Paperasserie', description: 'Paperless-ngx SignaturePDF (finances) Kresus , (Firefly-III , Actual )', imageUrl: './logo.png', items: ['Paperless-ngx', 'SignaturePDF'] },
-    { title: 'Lectures', description: 'BookWyrm', imageUrl: './logo.png', items: ['BookWyrm'] },
-    { title: 'Musique', description: 'Airsonic Navidrome Jellyfin', imageUrl: './logo.png', items: ['Airsonic', 'Navidrome', 'Jellyfin'] },
+    { title: 'Nextcloud', description: 'Fichier , Contacts , Agenda  ', imageUrl: './fichier.jpg', items: ['Nextcloud'] },
+    { title: 'Vaultwarden', description: 'Mots de passe', imageUrl: './mdp.jpg', items: ['Nextcloud'] },
+    { title: 'Keepass', description: 'Mots de passe ', imageUrl: './mdp.jpg', items: ['Vaultwarden', 'Keepass'] },
+    { title: 'syncserver-rs', description: 'Navigateur', imageUrl: './navigateur.jpg', items: ['syncserver-rs'] },
+    { title: 'Paperless-ngx', description: 'Paperasserie ', imageUrl: './paperasserie.jpg', items: ['Paperless-ngx', 'SignaturePDF'] },
+    { title: 'SignaturePDF', description: 'Paperasserie ', imageUrl: './paperasserie.jpg', items: ['Paperless-ngx', 'SignaturePDF'] },
+    { title: 'BookWyrm', description: 'Lecture ', imageUrl: './lecture.jpg', items: ['BookWyrm'] },
+    { title: 'Airsonic', description: 'Musique', imageUrl: './music.jpg', items: ['Airsonic', 'Navidrome', 'Jellyfin'] },
+    { title: 'Navidrome', description: 'Musique', imageUrl: './music.jpg', items: ['Airsonic', 'Navidrome', 'Jellyfin'] },
+    { title: 'Jellyfin', description: 'Musique', imageUrl: './music.jpg', items: ['Airsonic', 'Navidrome', 'Jellyfin'] },
 ];
 
 export const bundlesData = [
