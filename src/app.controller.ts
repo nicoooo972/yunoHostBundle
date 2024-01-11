@@ -9,7 +9,7 @@ export class AppController {
     return this.appsService.getApp();
   }
 
-  @Get('files')
+  @Get('app/files')
   async getAppsChosen() {
     return this.appsService.getAppsChosen();
   }
