@@ -11,27 +11,35 @@ export class InstallService {
       for (const data of datas) {
         const { name, domain, admins, password } = data;
 
-        const command = `ssh nicoco@dcm1tlg1.nohost.me sudo -S yunohost app install ${name} --args '${domain}&path=/${name}&init_main_permission=admins&password=${password}&admin=${admins}'"`;
+        // Vérifiez si name est un tableau
+        if (Array.isArray(name)) {
+          // Itérer sur chaque nom d'application
+          for (const appName of name) {
+            const command = `ssh nicoco@dcm1tlg1.nohost.me "sudo yunohost app install ${appName} --args 'domain=${domain}&path=/${appName}&init_main_permission=admins&admin=${admins}&password=${password}'"`;
+            console.log(command);
+            const childProcess = spawn('bash', ['-c', command]);
 
-        const childProcess = spawn('bash', ['-c', command], { shell: true });
+            childProcess.stdout.on('data', (data) => {
+              console.log(`Données de sortie : ${data}`);
+            });
 
-        childProcess.stdout.on('data', (data) => {
-          console.log(`Données de sortie : ${data}`);
-        });
+            childProcess.stderr.on('data', (data) => {
+              console.error(`Erreur de sortie : ${data}`);
+            });
 
-        childProcess.stderr.on('data', (data) => {
-          console.error(`Erreur de sortie : ${data}`);
-        });
-
-        childProcess.on('close', (code) => {
-          if (code === 0) {
-            console.log(`Installation réussie de ${name}`);
-          } else {
-            console.error(
-              `Erreur lors de l'installation de ${name}, code de sortie : ${code}`,
-            );
+            childProcess.on('close', (code) => {
+              if (code === 0) {
+                console.log(`Installation réussie de ${appName}`);
+              } else {
+                console.error(
+                  `Erreur lors de l'installation de ${appName}, code de sortie : ${code}`,
+                );
+              }
+            });
           }
-        });
+        } else {
+          console.error(`La valeur de 'name' n'est pas un tableau.`);
+        }
       }
     } catch (error) {
       console.error(

@@ -46,15 +46,32 @@ const Install: React.FC<InstallForm> = ({ onClose, open, selectedApps }) => {
     getAdminsData(); // Call  the fetchData function directly
   }, []);
 
-  const handleSubmit = () => {
-    const formData = {
+  const handleSubmit = async () => {
+    const formData = [{
         name: selectedApps,
-        admin: selectedAdmin,
+        admins: selectedAdmin,
         domain: selectedDomain,
         password: password,
-      };
-        console.log('Formulaire soumis avec les valeurs :', formData);
-        onClose();
+  }];
+      try {
+        const response = await fetch('http://localhost:3000/install', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        console.log(response);
+    
+        if (response.ok) {
+          console.log('Formulaire soumis avec les valeurs :', formData);
+          onClose();
+        } else {
+          console.error('Erreur lors de la soumission du formulaire');
+        }
+      } catch (error) {
+        console.error('Erreur lors de la soumission du formulaire :', error);
+      }
   };
 
   return (

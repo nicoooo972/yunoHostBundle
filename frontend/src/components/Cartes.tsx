@@ -28,7 +28,6 @@ const Cartes: React.FC = () => {
                 const result = await response.json()
 
                 setData(result);
-                console.log(result);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -46,7 +45,9 @@ const Cartes: React.FC = () => {
     };
 
     const handleLaunchBundles = () => {
-        console.log('Bundles sélectionnés :', selectedCards);
+        const lowercaseSelectedCards = selectedCards.map(app => app.toLowerCase());
+
+        console.log('Bundles sélectionnés :', lowercaseSelectedCards);
         setShowInstall(true);
     };
 
@@ -76,7 +77,7 @@ const Cartes: React.FC = () => {
             <button className="launch-bundles-button" onClick={handleLaunchBundles}>
                 Je lance mes Bundles
             </button>
-            <Install open={showInstall} onClose={() => setShowInstall(false)} selectedApps={selectedCards}/>
+            <Install open={showInstall} onClose={() => setShowInstall(false)} selectedApps={selectedCards.map(app => app.toLowerCase())}/>
         </div>
     );
 };
