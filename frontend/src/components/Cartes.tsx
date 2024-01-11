@@ -6,7 +6,10 @@ import './CarteSimple.css';
 // import { cartesData } from '../data/Data';
 
 interface Application {
-    name: string
+    name: string;
+    description: string;
+    logo_hash: string;
+
 }
 
 const Cartes: React.FC = () => {
@@ -58,7 +61,7 @@ const Cartes: React.FC = () => {
                             key={index}
                             title={bundle.name}
                             description={bundle.description}
-                            imageUrl={bundle.logo_hasg}
+                            imageUrl={bundle.logo_hash}
                             isSelected={selectedCards.includes(bundle.name)}
                             onToggle={() => handleCardToggle(bundle.name)}
                             listItems={bundle.items}
