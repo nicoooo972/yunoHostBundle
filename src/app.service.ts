@@ -74,6 +74,7 @@ export class AppService {
                 version: element.manifest.version,
                 category: element.category,
                 subtags: element.subtags,
+                logo_hasg: element.logo_hash,
               });
             }
           }
