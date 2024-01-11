@@ -1,0 +1,36 @@
+.cartes-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: white;
+
+}
+
+.container-style {
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+
+
+
+.launch-bundles-button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.launch-bundles-button:hover {
+    background-color: #2980b9;
+}
