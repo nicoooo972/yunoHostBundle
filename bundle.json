@@ -1,0 +1,21 @@
+{
+    "bundle":{
+    "name": "Synchronisation",
+    "description": "Synchronisation de données",
+    "applications": [
+        "Nextcloud",
+        "Syncthing",
+        "Vaultwarden",
+        "Keepass",
+        "syncserver-rs",
+        "Paperless-ngx",
+        "SignaturePDF",
+        "Kresus",
+        "BookWyrm",
+        "Airsonic",
+        "Navidrome",
+        "Jellyfin",
+        "Airsonic-Advanced",
+        "Borg Backup"
+    ]
+}}
