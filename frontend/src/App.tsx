@@ -1,90 +1,75 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
-interface Application {
-  name: string;
-  description: string;
-  weight: string;
-  version: string;
-  category: string;
-  subtags: string[];
-  logo_hash: string;
+interface FormData {
+  admins: string[];
+  domains: string[];
+  password: string;
 }
 
-function App() {
-  const [data, setData] = useState<Application[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+const App: React.FC = () => {
+  const { register, handleSubmit } = useForm<FormData>();
+
+  const [admins, setAdmins] = useState<string[]>([]);
+  const [domains, setDomains] = useState<string[]>([]);
+  const [password, setPassword] = useState<string>("");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/app/files', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          // Include a body if needed
-          // body: JSON.stringify({ key: 'value' }),
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const result = await response.json();
-        setData(result);
-        console.log(result);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+    // Récupération des noms et des domaines de la route get
+    fetch("http://localhost:3000/install/users-admin")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setAdmins(data.admins);
+      });
   }, []);
 
-  const filterDataByCategory = () => {
-    if (selectedCategory) {
-      const filteredData = data.filter(application => application.category === selectedCategory);
-      return filteredData;
-    }
-    return data;
-  };
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
+  const onSubmit = (data: { admins: string[]; domains: string[]; password: string }) => {
+    // Faire quelque chose avec les données du formulaire
+    console.log(data);
   };
 
   return (
-    <div>
-      <select onChange={(e) => handleCategoryChange(e.target.value)}>
-        <option value="">All Bundles</option>
-        <option value="synchronization">Synchronization</option>
-        <option value="social_media">Social Media</option>
-        <option value="multimedia">Multimedia</option>
-      </select>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <h1>Formulaire</h1>
 
-      <div style={{ width: '1080px', margin: 'auto', display: 'flex', flexDirection: 'row', alignItems: 'flex-start', flexWrap: 'wrap', justifyContent: 'center', gap: '4rem' }}>
-        {filterDataByCategory().map((application) => (
-          <div key={application.name}>
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
-              <img src={`https://app.yunohost.org/default/v3/logos/${application.logo_hash}.png`} alt="" width={64} height={64} loading='lazy' />
-              <li>{application.name}</li>
-            </div>
-            <p>{application.description}</p>
-            <span>{application.weight}</span>
-            <span>{application.version}</span>
-            <strong>{application.category}</strong>
-            {application.subtags && application.subtags.length > 0 && (
-              <ul>
-                {application.subtags.map((subtag, index) => (
-                  <li key={index}>{subtag}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+      <div>
+        <label htmlFor="admins">Admins</label>
+        <select
+          id="admins"
+          {...register("admins")}
+        >
+          {admins.map((users, index) => (
+            <option key={index} value={users}>
+              {users}
+            </option>
+          ))}
+        </select>
       </div>
-    </div>
+
+      <div>
+        <label htmlFor="domains">Noms de domaine</label>
+        <input
+          type="text"
+          id="domains"
+          {...register("domains")}
+          placeholder="Entrez les noms de domaine"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          {...register("password")}
+          placeholder="Entrez le mot de passe"
+        />
+      </div>
+
+      <button type="submit">Envoyer</button>
+    </form>
   );
-}
+};
 
 export default App;
