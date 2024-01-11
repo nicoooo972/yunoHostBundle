@@ -1,13 +1,36 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CarteSimple from './CarteSimple';
 import Install from './Install';
 import './Cartes.css';
 import './CarteSimple.css';
-import { cartesData } from '../data/Data';
+// import { cartesData } from '../data/Data';
+
+interface Application {
+    name: string
+}
 
 const Cartes: React.FC = () => {
     const [selectedCards, setSelectedCards] = useState<string[]>([]);
     const [showInstall, setShowInstall] = useState(false);
+
+    const [data, setData] = useState<Application[]>([]);
+
+    // ...
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/app/files');
+                const result = await response.json()
+
+                setData(result);
+                console.log(result);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
 
     const handleCardToggle = (title: string) => {
         const isSelected = selectedCards.includes(title);
@@ -28,17 +51,21 @@ const Cartes: React.FC = () => {
             <h1>Choisissez les Bundles que vous voulez </h1>
 
             <div className="cartes-container">
-                {cartesData.map((bundle, index) => (
-                    <CarteSimple
-                        key={index}
-                        title={bundle.title}
-                        description={bundle.description}
-                        imageUrl={bundle.imageUrl}
-                        isSelected={selectedCards.includes(bundle.title)}
-                        onToggle={() => handleCardToggle(bundle.title)}
-                        listItems={bundle.items}
-                    />
-                ))}
+                {data
+                    .filter(item => item.name)
+                    .map((bundle, index) => (
+                        <CarteSimple
+                            key={index}
+                            title={bundle.name}
+                            description={bundle.description}
+                            imageUrl={bundle.logo_hasg}
+                            isSelected={selectedCards.includes(bundle.name)}
+                            onToggle={() => handleCardToggle(bundle.name)}
+                            listItems={bundle.items}
+                        />
+                    ))}
+
+
             </div>
 
             <h1>Confirmez votre choix </h1>

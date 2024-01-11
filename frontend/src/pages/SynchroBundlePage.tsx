@@ -6,6 +6,8 @@ import './SynchroBundlePage.css';
 const Synchro: React.FC = () => {
     const cartesRef = useRef<HTMLDivElement>(null);
 
+
+
     const handleScrollToCartes = () => {
         if (cartesRef.current) {
             cartesRef.current.scrollIntoView({ behavior: 'smooth' });

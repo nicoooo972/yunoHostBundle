@@ -22,7 +22,7 @@ interface CarteSimple {
     listItems: string[];
 }
 
-const CarteSimple: React.FC<CarteSimple> = ({ title, description, imageUrl, isSelected, onToggle, listItems }) => {
+const CarteSimple: React.FC<CarteSimple> = ({ title, description, imageUrl, isSelected, onToggle }) => {
     const [openDialog, setOpenDialog] = useState<boolean>(false);
 
     const handleButtonClick = () => {
@@ -36,7 +36,7 @@ const CarteSimple: React.FC<CarteSimple> = ({ title, description, imageUrl, isSe
     return (
         <div className={`card-container ${isSelected ? 'selected' : ''}`}>
             <Card className='custom-card-container' >
-                <CardMedia component="img" height="200" image={imageUrl} alt={title} />
+                <CardMedia component="img" image={`https://app.yunohost.org/default/v3/logos/${imageUrl}.png`} width={64} height={64} alt={title} />
                 <CardContent>
                     <Typography variant="h6" gutterBottom>
                         {title}
