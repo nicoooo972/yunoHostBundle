@@ -9,6 +9,7 @@ interface Application {
     name: string;
     description: string;
     logo_hash: string;
+    items: []
 
 }
 
