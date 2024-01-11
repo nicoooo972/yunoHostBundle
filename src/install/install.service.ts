@@ -50,4 +50,12 @@ export class InstallService {
 
     return userAdmin;
   }
+
+  async getDomain(): Promise<string> {
+    const { stdout } = await execPromise(
+      'ssh nicoco@dcm1tlg1.nohost.me sudo yunohost domain list --output-as json',
+    );
+    const domain = JSON.parse(stdout);
+    return domain;
+  }
 }

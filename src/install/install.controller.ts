@@ -33,4 +33,14 @@ export class InstallController {
       });
     }
   }
+
+  @Get('domain')
+  async getDomain(@Res() res: Response): Promise<any> {
+    try {
+      const domain = await this.install.getDomain();
+      res.status(200).json({ status: 200, message: 'OK', domain });
+    } catch (error) {
+      res.status(500).json({ status: 500, error: error.message });
+    }
+  }
 }
