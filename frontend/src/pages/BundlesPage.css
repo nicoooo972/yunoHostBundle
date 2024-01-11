@@ -1,0 +1,14 @@
+.cartes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    height: 100vh;
+    width: 100vh;
+}
+
+.titre-2 {
+    margin-bottom: 200px;
+    text-align: center;
+}
