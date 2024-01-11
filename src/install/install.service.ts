@@ -43,7 +43,7 @@ export class InstallService {
 
   async getAdmin(): Promise<string> {
     const { stdout } = await execPromise(
-      'ssh nicoco@dcm1tlg1.nohost.me echo "12345azerty" | sudo -S yunohost user list --fields username --output-as json',
+      'ssh nicoco@dcm1tlg1.nohost.me sudo -S yunohost user list --fields username --output-as json',
     );
     // Parse le JSON
     const userAdmin = JSON.parse(stdout);

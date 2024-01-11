@@ -76,7 +76,7 @@ const Cartes: React.FC = () => {
             <button className="launch-bundles-button" onClick={handleLaunchBundles}>
                 Je lance mes Bundles
             </button>
-            <Install open={showInstall} onClose={() => setShowInstall(false)} />
+            <Install open={showInstall} onClose={() => setShowInstall(false)} selectedApps={selectedCards}/>
         </div>
     );
 };

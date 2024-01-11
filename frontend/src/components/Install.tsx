@@ -7,15 +7,18 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
+import { TextField } from '@mui/material';
 
 interface InstallForm {
   onClose: () => void;
   open: boolean;
+  selectedApps: string[];
 }
 
-const Install: React.FC<InstallForm> = ({ onClose, open }) => {
+const Install: React.FC<InstallForm> = ({ onClose, open, selectedApps }) => {
   const [admins, setAdmins] = useState<string[]>([]);
   const [domains, setDomains] = useState<string[]>([]);
+  const [password, setPassword] = useState<string>('');
   const [selectedAdmin, setSelectedAdmin] = useState<string>('');
   const [selectedDomain, setSelectedDomain] = useState<string>('');
 
@@ -44,8 +47,14 @@ const Install: React.FC<InstallForm> = ({ onClose, open }) => {
   }, []);
 
   const handleSubmit = () => {
-    console.log('Formulaire soumis avec les valeurs :', { selectedAdmin });
-    onClose();
+    const formData = {
+        name: selectedApps,
+        admin: selectedAdmin,
+        domain: selectedDomain,
+        password: password,
+      };
+        console.log('Formulaire soumis avec les valeurs :', formData);
+        onClose();
   };
 
   return (
@@ -57,7 +66,6 @@ const Install: React.FC<InstallForm> = ({ onClose, open }) => {
           Nom de l'administrateur
         </InputLabel>
         <Select
-          id="nom-administrateur"
           variant="outlined"
           fullWidth
           value={selectedAdmin}
@@ -69,20 +77,29 @@ const Install: React.FC<InstallForm> = ({ onClose, open }) => {
             </MenuItem>
           ))}
         </Select>
-        <InputLabel htmlFor="nom-administrateur">Nom du domaine</InputLabel>
+        <InputLabel htmlFor="domain">Nom du domaine</InputLabel>
         <Select
-          id="domain"
           variant="outlined"
           fullWidth
           value={selectedDomain}
           onChange={(e) => setSelectedDomain(e.target.value as string)}
         >
           {domains.map((main, index) => (
-            <option key={index} value={main}>
+            <MenuItem key={index} value={main}>
               {main}
-            </option>
+            </MenuItem>
           ))}
         </Select>
+        <InputLabel htmlFor="password">Mot de passe</InputLabel>
+        <TextField
+          label="Mot de passe"
+          variant="outlined"
+          fullWidth
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          margin="normal"
+        />
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} color="primary">
