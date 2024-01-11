@@ -49,7 +49,11 @@ export class AppService {
       const appsList = parsedData.bundle.applications;
 
       const bundleName = parsedData.bundle.name;
-
+      const bundleDesc = parsedData.bundle.description;
+      res.push({
+        bundleName: bundleName,
+        bundleDesc: bundleDesc,
+      });
       for (const app in appsData) {
         const element = appsData[app];
 
@@ -59,7 +63,6 @@ export class AppService {
           name = appsList[index];
           if (element.manifest.name === name) {
             res.push({
-              bundmeName: bundleName,
               name: element.manifest.name,
               description: element.manifest.description.en,
               weight: element.manifest.integration.disk,
