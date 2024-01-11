@@ -43,4 +43,14 @@ export class InstallController {
       res.status(500).json({ status: 500, error: error.message });
     }
   }
+
+  @Get('installed-apps')
+  async getInstalledApps(@Res() res: Response): Promise<any> {
+    try {
+      const installedApps = await this.install.getInstalledApp();
+      res.status(200).json({ status: 200, message: 'OK', installedApps });
+    } catch (error) {
+      res.status(500).json({ status: 500, error: error.message });
+    }
+  }
 }
