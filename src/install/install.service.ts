@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AppsService } from 'src/apps/apps.service';
+import { AppService } from 'src/app.service';
 import { promisify } from 'util';
 import { spawn, exec } from 'child_process';
 
@@ -7,7 +7,7 @@ const execPromise = promisify(exec);
 
 @Injectable()
 export class InstallService {
-  constructor(private appService: AppsService) {}
+  constructor(private appService: AppService) {}
 
   async installApplication(datas: any[]): Promise<void> {
     try {
