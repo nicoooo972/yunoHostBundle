@@ -72,22 +72,6 @@ export class AppService {
       }
 
       return res;
-
-      // Convertissez le tableau JSON en format JSON
-      // const appsJSON = JSON.stringify(res, null, 2); // Les paramètres null, 2 formatent le JSON avec une indentation de 2 espaces.
-
-      // // Spécifiez le chemin du fichier JSON que vous souhaitez créer
-      // const pathData = `./${bundleName}.json`;
-
-      // // Écrivez le contenu JSON dans le fichier
-      // await fs.writeFile(pathData, appsJSON, (error) => {
-      //   if (error) {
-      //     console.error("Erreur lors de l'écriture du fichier :", error);
-      //   } else {
-      //     console.log('Fichier JSON créé avec succès !');
-      //   }
-      //   return res;
-      // });
     } catch (e) {
       throw e;
     }
