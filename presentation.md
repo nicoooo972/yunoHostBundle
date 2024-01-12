@@ -99,6 +99,7 @@ Nextcloud, Syncthing, Vaultwarden, Keepass, Syncserver-rs, Paperasserie, Signatu
 - Material UI
 - ReactJS
 - Typescript
+- Tailwind
 
 
 
