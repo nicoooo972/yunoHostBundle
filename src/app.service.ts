@@ -43,34 +43,41 @@ export class AppService {
       const appsData = await this.getApp();
 
       const jsonData = await fs.readFile(this.filePath, 'utf-8');
+      console.log(jsonData);
 
       const parsedData = JSON.parse(jsonData);
 
-      const appsList = parsedData.bundle.applications;
+      const bundles = parsedData.bundles;
 
-      const bundleName = parsedData.bundle.name;
-      const bundleDesc = parsedData.bundle.description;
-      res.push({
-        bundleName: bundleName,
-        bundleDesc: bundleDesc,
-      });
-      for (const app in appsData) {
-        const element = appsData[app];
+      for (const bundle of bundles) {
+        const appsList = bundle.applications;
+        const bundleName = bundle.name;
+        const bundleDesc = bundle.description;
 
-        const index = appsList.indexOf(element.manifest.name);
-        let name = '';
-        if (index !== -1) {
-          name = appsList[index];
-          if (element.manifest.name === name) {
-            res.push({
-              id: element.id,
-              name: element.manifest.name,
-              description: element.manifest.description.en,
-              weight: element.manifest.integration.disk,
-              version: element.manifest.version,
-              category: element.category,
-              subtags: element.subtags,
-            });
+        res.push({
+          bundleName: bundleName,
+          bundleDesc: bundleDesc,
+        });
+
+        for (const app in appsData) {
+          const element = appsData[app];
+
+          const index = appsList.indexOf(element.manifest.name);
+          let name = '';
+          if (index !== -1) {
+            name = appsList[index];
+            if (element.manifest.name === name) {
+              res.push({
+                id: element.id,
+                name: element.manifest.name,
+                description: element.manifest.description.en,
+                weight: element.manifest.integration.disk,
+                version: element.manifest.version,
+                category: element.category,
+                subtags: element.subtags,
+                logo_hash: element.logo_hash,
+              });
+            }
           }
         }
       }
