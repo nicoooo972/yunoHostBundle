@@ -3,7 +3,7 @@ import Card from './Card';
 
 import Install from './Install';
 import './AllCard.css';
-import './Card.css';
+
 
 interface Application {
     id: string;
@@ -53,14 +53,14 @@ const AllCard: React.FC = () => {
     };
 
     return (
-        <div className="Cartes">
+        <div className="px-10">
             <h1 className='text-2xl font-semibold'>Choisissez les Bundles à installer</h1>
 
-            <div className="flex flex-wrap mx-auto gap-6 justify-center">
+            <div className="flex flex-wrap  gap-6">
                 {data
                     .filter((item) => item.name)
                     .map((bundle, index) => (
-                        <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 mb-6">
+                        <div key={index} className="flex justify-center mx-auto">
                             <Card
                                 id={bundle.id}
                                 name={bundle.name}

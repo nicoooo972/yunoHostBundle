@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import Accueil from '../components/Acceuil';
 import AllCard from '../components/AllCard';
 
 
@@ -9,15 +8,11 @@ const Synchro: React.FC = () => {
 
 
 
-    const handleScrollToCartes = () => {
-        if (cardRef.current) {
-            cardRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    }; return (
+
+    return (
         <><div>
-            <div>
-                <Accueil scrollToCartes={handleScrollToCartes} />
-            </div>
+            <h1 className='text-4xl font-bold py-10'>Install tes bundles !</h1>
+
             <div ref={cardRef}>
 
                 <AllCard />

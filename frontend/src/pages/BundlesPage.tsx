@@ -49,7 +49,7 @@ const BundlesPage: React.FC = () => {
                 <div aria-hidden="true" className="absolute inset-0 w-full m-auto grid grid-cols-2 -space-x-52 opacity-20"></div>
                 <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
                     <div className="relative">
-                        <div className="flex items-center justify-center h-[50vh] px-2 sm:px-0">
+                        <div className="flex items-center justify-center px-2 sm:px-0">
                             <div className="mt-6 m-auto space-y-6 w-full sm:w-8/12 md:w-7/12">
                                 <h1
                                     className="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-gray-700 dark:text-black">
@@ -63,7 +63,7 @@ const BundlesPage: React.FC = () => {
                 </div>
             </div>
 
-            <Container className='cartes-container'>
+            <Container className='flex justify-center mx-auto'>
                 <Grid container spacing={3}>
                     {data.map((application, index) => (
                         <Grid item key={index} xs={12} sm={6} md={4} lg={4}>
