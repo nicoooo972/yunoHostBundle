@@ -6,6 +6,7 @@ import './AllCard.css';
 import './Card.css';
 
 interface Application {
+    id: string;
     name: string;
     description: string;
     logo_hash: string;
@@ -35,12 +36,12 @@ const AllCard: React.FC = () => {
         fetchData();
     }, []);
 
-    const handleCardToggle = (title: string) => {
-        const isSelected = selectedCards.includes(title);
+    const handleCardToggle = (id: string) => {
+        const isSelected = selectedCards.includes(id);
         if (isSelected) {
-            setSelectedCards(selectedCards.filter((cardTitle) => cardTitle !== title));
+            setSelectedCards(selectedCards.filter((cardTitle) => cardTitle !== id));
         } else {
-            setSelectedCards([...selectedCards, title]);
+            setSelectedCards([...selectedCards, id]);
         }
     };
 
@@ -61,13 +62,14 @@ const AllCard: React.FC = () => {
                     .map((bundle, index) => (
                         <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 mb-6">
                             <Card
-                                title={bundle.name}
+                                id={bundle.id}
+                                name={bundle.name}
                                 description={bundle.description}
                                 imageUrl={bundle.logo_hash}
                                 version={bundle.version}
                                 weight={bundle.weight}
-                                isSelected={selectedCards.includes(bundle.name)}
-                                onToggle={() => handleCardToggle(bundle.name)}
+                                isSelected={selectedCards.includes(bundle.id)}
+                                onToggle={() => handleCardToggle(bundle.id)}
                                 listItems={bundle.items}
                                 subtags={bundle.subtags}
                             />
