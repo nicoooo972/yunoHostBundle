@@ -1,26 +1,32 @@
 import React, { useRef } from 'react';
 import Accueil from '../components/Acceuil';
 import Cartes from '../components/Cartes';
-import './SynchroBundlePage.css';
+
+
 
 const Synchro: React.FC = () => {
-    const cartesRef = useRef<HTMLDivElement>(null);
+    const cardRef = useRef<HTMLDivElement>(null);
 
 
 
     const handleScrollToCartes = () => {
-        if (cartesRef.current) {
-            cartesRef.current.scrollIntoView({ behavior: 'smooth' });
+        if (cardRef.current) {
+            cardRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }; return (
-        <div>
+        <><div>
             <div>
                 <Accueil scrollToCartes={handleScrollToCartes} />
             </div>
-            <div ref={cartesRef}>
+            <div ref={cardRef}>
+
                 <Cartes />
             </div>
-        </div>
+        </div><div className="flex py-5 m-auto text-gray-800 text-sm flex-col items-center border-t max-w-screen-xl mt-10 flex-1">
+                <footer className='flex flex-shrink-0'>
+                    <p>© Copyright 2023. All Rights Reserved.</p>
+                </footer>
+            </div></>
     );
 };
 

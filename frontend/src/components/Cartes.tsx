@@ -9,6 +9,9 @@ interface Application {
     name: string;
     description: string;
     logo_hash: string;
+    version: string;
+    weight: string;
+    subtags: string[];
     items: []
 
 }
@@ -52,10 +55,10 @@ const Cartes: React.FC = () => {
     };
 
     return (
-        <div className="container-style">
-            <h1>Choisissez les Bundles que vous voulez </h1>
+        <div className="">
+            <h1 className='text-2xl font-semibold'>Choisissez les Bundles a installer </h1>
 
-            <div className="cartes-container">
+            <div className="flex mx-36 flex-wrap gap-10 px-6 items-start justify-start">
                 {data
                     .filter(item => item.name)
                     .map((bundle, index) => (
@@ -64,20 +67,20 @@ const Cartes: React.FC = () => {
                             title={bundle.name}
                             description={bundle.description}
                             imageUrl={bundle.logo_hash}
+                            version={bundle.version}
+                            weight={bundle.weight}
                             isSelected={selectedCards.includes(bundle.name)}
                             onToggle={() => handleCardToggle(bundle.name)}
                             listItems={bundle.items}
+                            subtags={bundle.subtags}
                         />
                     ))}
-
-
             </div>
 
-            <h1>Confirmez votre choix </h1>
-            <button className="launch-bundles-button" onClick={handleLaunchBundles}>
-                Je lance mes Bundles
+            <button className="launch-bundles-button mt-10" onClick={handleLaunchBundles}>
+                Installer les  bundles
             </button>
-            <Install open={showInstall} onClose={() => setShowInstall(false)} selectedApps={selectedCards.map(app => app.toLowerCase())}/>
+            <Install open={showInstall} onClose={() => setShowInstall(false)} selectedApps={selectedCards.map(app => app.toLowerCase())} />
         </div>
     );
 };

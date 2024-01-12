@@ -1,45 +1,24 @@
 {
-    "bundles": [
-      {
-        "name": "Synchronisation",
-        "description": "Synchronisation de données",
-        "applications": [
-          "Nextcloud",
-          "Syncthing",
-          "Vaultwarden",
-          "Keepass",
-          "syncserver-rs",
-          "Paperless-ngx",
-          "SignaturePDF",
-          "Kresus",
-          "BookWyrm",
-          "Airsonic",
-          "Navidrome",
-          "Jellyfin",
-          "Airsonic-Advanced",
-          "Borg Backup"
-        ]
-      },
-      {
-        "name": "test",
-        "description": "Synchronisation de test",
-        "applications": [
-          "Nextcloud",
-          "Syncthing",
-          "Vaultwarden",
-          "Keepass",
-          "syncserver-rs",
-          "Paperless-ngx",
-          "SignaturePDF",
-          "Kresus",
-          "BookWyrm",
-          "Airsonic",
-          "Navidrome",
-          "Jellyfin",
-          "Airsonic-Advanced",
-          "Borg Backup"
-        ]
-      }
-    ]
-  }
-  
+  "bundles": [
+    {
+      "name": "Synchronisation",
+      "description": "Synchronisation de données",
+      "applications": [
+        "Nextcloud",
+        "Syncthing",
+        "Vaultwarden",
+        "Keepass",
+        "syncserver-rs",
+        "Paperless-ngx",
+        "SignaturePDF",
+        "Kresus",
+        "BookWyrm",
+        "Airsonic",
+        "Navidrome",
+        "Jellyfin",
+        "Airsonic-Advanced",
+        "Borg Backup"
+      ]
+    }
+  ]
+}
