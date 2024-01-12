@@ -56,7 +56,7 @@ const AllCard: React.FC = () => {
         <div className="Cartes">
             <h1 className='text-2xl font-semibold'>Choisissez les Bundles à installer</h1>
 
-            <div className="flex flex-wrap gap-6 justify-center">
+            <div className="flex flex-wrap mx-auto gap-6 justify-center">
                 {data
                     .filter((item) => item.name)
                     .map((bundle, index) => (
