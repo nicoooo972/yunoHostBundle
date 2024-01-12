@@ -53,6 +53,7 @@ L'application web utilise une architecture basée sur le modèle ReactJs.
 * Axios
 * Material UI
 * Typescript
+* Tailwind
 
 #### Technologies Back-End (API)
 L'API est construite avec NestJs.
