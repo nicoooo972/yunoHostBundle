@@ -1,8 +1,9 @@
 {
-    "bundle":{
-    "name": "Synchronisation",
-    "description": "Synchronisation de données",
-    "applications": [
+  "bundles": [
+    {
+      "name": "Synchronisation",
+      "description": "Synchronisation de données",
+      "applications": [
         "Nextcloud",
         "Syncthing",
         "Vaultwarden",
@@ -17,5 +18,7 @@
         "Jellyfin",
         "Airsonic-Advanced",
         "Borg Backup"
-    ]
-}}
+      ]
+    }
+  ]
+}

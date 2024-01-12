@@ -1,37 +1,88 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 import { Grid, Container } from '@mui/material';
 import Bundles from '../components/Bundles';
-import Logo from '../assets/logo.png';
-import { bundlesData } from '../data/Data';
+
+// import { bundlesData } from '../data/Data';
 import '../components/Bundles.css';  // Import du fichier CSS
+
+interface Application {
+    bundleName: string;
+    bundleDesc: string;
+}
 
 const BundlesPage: React.FC = () => {
     const handleChoisir = (carteNom: string) => {
         console.log(`Carte choisie : ${carteNom}`);
     };
 
+
+    const [data, setData] = useState<Application[]>([]);
+
+    // ...
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/app/files');
+                const result: Application[] = await response.json();
+
+                // Ensure that each item has the required properties
+                const filteredData = result.filter((item) => item.bundleName && item.bundleDesc);
+
+                setData(filteredData);
+                console.log(filteredData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    // ...
+
+
     return (
-        <div className="cartes-container">
-            <img src={Logo} alt="Logo" style={{ marginBottom: '20px' }} />
+        <>  <div className="p-4 min-h-screen">
+            <div className="relative py-12 overflow-hidden">
+                <div aria-hidden="true" className="absolute inset-0 w-full m-auto grid grid-cols-2 -space-x-52 opacity-20"></div>
+                <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                    <div className="relative">
+                        <div className="flex items-center justify-center px-2 sm:px-0">
+                            <div className="mt-6 m-auto space-y-6 w-full sm:w-8/12 md:w-7/12">
+                                <h1
+                                    className="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-gray-700 dark:text-black">
+                                    Vous cherchez à synchroniser vos données entre périphériques?
+                                </h1>
+                                <p className="text-center text-sm sm:text-base md:text-xl text-gray-600 dark:text-gray-700">Launch
+                                    Vous voulez un accès hors ligne à vos données</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <Container>
-                <h1>Application bundles</h1>
-                <h2 className="titre-2">Choisissez le Bundle qui répond à votre besoin quotidien </h2>
-
+            <Container className='flex justify-center mx-auto'>
                 <Grid container spacing={3}>
-                    {bundlesData.map((carte, index) => (
+                    {data.map((application, index) => (
                         <Grid item key={index} xs={12} sm={6} md={4} lg={4}>
                             <Bundles
-                                nom={carte.nom}
-                                description={carte.description}
-                                lien={carte.lien}
-                                onChoisir={() => handleChoisir(carte.nom)}
+                                nom={application.bundleName}
+                                description={application.bundleDesc}
+                                lien={"/Synchro/"}
+                                onChoisir={() => handleChoisir(application.bundleName)}
                             />
                         </Grid>
                     ))}
                 </Grid>
             </Container>
         </div>
+
+
+
+
+        </>
     );
 };
 

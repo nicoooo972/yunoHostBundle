@@ -15,6 +15,13 @@ style: |
     from { transform: translateY(100%); }
     to { transform: translateY(0%); }
   }
+  img[alt~="ill"]{
+    box-shadow: 0 0 20px rgba(0,0,0,.15);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 ---
 
 
@@ -57,7 +64,7 @@ Nextcloud, Syncthing, Vaultwarden, Keepass, Syncserver-rs, Paperasserie, Signatu
 - Personnes souhaitant éviter les GAFAMS.
 - Personnes souhaitant avoir un cloud personnel.
 
-![w:500 ](https://img.freepik.com/vecteurs-libre/journee-jeunesse-gens-se-serrant-ensemble-illustration_23-2148583217.jpg?w=2000&t=st=1704959825~exp=1704960425~hmac=031fd610837250a7fd1cebcf5dcd4afd679e27c52c255b0d9dae5645fe357fd9)
+![ill w:500](https://img.freepik.com/vecteurs-libre/journee-jeunesse-gens-se-serrant-ensemble-illustration_23-2148583217.jpg?w=2000&t=st=1704959825~exp=1704960425~hmac=031fd610837250a7fd1cebcf5dcd4afd679e27c52c255b0d9dae5645fe357fd9)
 
 ---
 # Persona 1 :man:
@@ -93,47 +100,45 @@ Nextcloud, Syncthing, Vaultwarden, Keepass, Syncserver-rs, Paperasserie, Signatu
 - ReactJS
 - Typescript
 
+
+
 ---
 # Fonctionnalités :gear:
 
 - Choix du bundle
 - Choix des applications
 - Choix du nom de domaine
+- installation des applications
 
 
 ---
 # Interface utilisateur :computer:
-![w:1000](https://media.discordapp.net/attachments/307939606416850944/1194999443905323108/capture1.png?ex=65b264f5&is=659feff5&hm=36d1d415ff833f246b4d1de0302e0c0c7dd2d617188578eabbc67743f49680cc&=&format=webp&quality=lossless&width=2486&height=1230)
+![ill w:1000](https://media.discordapp.net/attachments/1038101963084144662/1195322151629226064/image.png?ex=65b39180&is=65a11c80&hm=74feb39683eca0b9b597d29d74038ff7c968cb514112740d7dd366d72f77993c&=&format=webp&quality=lossless&width=1438&height=671)
 
 ---
 
-![w:1000](https://media.discordapp.net/attachments/307939606416850944/1194999443536232448/capture2.png?ex=65b264f5&is=659feff5&hm=bbdaf9f07843828d5c76c1a4105b7db99214b813a6aff2ef2ddd8802dc1871d0&=&format=webp&quality=lossless&width=2436&height=1230)
+![ill w:1000](https://media.discordapp.net/attachments/1038101963084144662/1195322267677237248/image.png?ex=65b3919c&is=65a11c9c&hm=0178c66aca4b976a3c0ab9286e6f223e64c6600ed6edcef02d3dae5334f5982a&=&format=webp&quality=lossless&width=1440&height=670)
 
 ---
 
-![w:1000](https://media.discordapp.net/attachments/307939606416850944/1194999442890305667/capture3.png?ex=65b264f5&is=659feff5&hm=f61bfa110f9216b486c3a249bd275be5b11e3fe0b5421d756ee206252d1b70a3&=&format=webp&quality=lossless&width=2432&height=1230)
+![ill w:1000](https://media.discordapp.net/attachments/1038101963084144662/1195322435902373888/image.png?ex=65b391c4&is=65a11cc4&hm=4962adcfbdc4dd6e7d227be3782643a1fc4decef5a1867f8f852b232ec192b22&=&format=webp&quality=lossless&width=1440&height=668)
 
----
-
-![w:1000](https://media.discordapp.net/attachments/307939606416850944/1194999442420547624/capture4.png?ex=65b264f5&is=659feff5&hm=88ad37f6612fdf2ae8e5127ae7452ad8850778927b6842ebb8e4e785b34da6ea&=&format=webp&quality=lossless&width=2418&height=1230)
 
 ---
 
 # Et la suite ? :thinking:
 
-Nouvelle fonctionnalité : **Désinstallation des applications déjà installé du bundle**, **Ajout d'un affichage des applications déjà installé**.
+Nouvelle fonctionnalité : 
+- **Désinstallation des applications déjà installé du bundle**  :no_entry:
+- **Ajout d'un affichage des applications déjà installé** :white_check_mark:
 
 ---
-# **Des questions ? :question:**
+# Des questions  :question:
 
-
-Image d'une question
-
-![w:500]()
+![ ill w:700](https://img.freepik.com/vecteurs-libre/illustration-personnes-dessinees-main-posant-questions_23-2148906555.jpg?w=1380&t=st=1705057599~exp=1705058199~hmac=ef559604af60a125a910b4b5f9e41a00a72be260fb95da136a96115d8025527d)
 
 
 ---
 
 # Sources 
 Images : Freepiks, Pexels, depositphotos
-
