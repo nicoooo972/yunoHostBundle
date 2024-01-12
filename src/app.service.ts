@@ -63,6 +63,7 @@ export class AppService {
           name = appsList[index];
           if (element.manifest.name === name) {
             res.push({
+              id: element.id,
               name: element.manifest.name,
               description: element.manifest.description.en,
               weight: element.manifest.integration.disk,
