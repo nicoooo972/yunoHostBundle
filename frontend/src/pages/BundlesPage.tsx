@@ -61,22 +61,23 @@ const BundlesPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                <Container className='cartes-container'>
+                    <Grid container spacing={3}>
+                        {data.map((application, index) => (
+                            <Grid item key={index} xs={12} sm={6} md={4} lg={4}>
+                                <Bundles
+                                    nom={application.bundleName}
+                                    description={application.bundleDesc}
+                                    lien={"/Synchro/"}
+                                    onChoisir={() => handleChoisir(application.bundleName)}
+                                />
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Container>
             </div>
 
-            <Container className='cartes-container'>
-                <Grid container spacing={3}>
-                    {data.map((application, index) => (
-                        <Grid item key={index} xs={12} sm={6} md={4} lg={4}>
-                            <Bundles
-                                nom={application.bundleName}
-                                description={application.bundleDesc}
-                                lien={"/Synchro/"}
-                                onChoisir={() => handleChoisir(application.bundleName)}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
+
         </div>
 
 

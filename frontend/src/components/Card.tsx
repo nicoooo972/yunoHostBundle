@@ -15,7 +15,7 @@ interface Card {
 
 const Card: React.FC<Card> = ({ id, name, description, imageUrl, isSelected, version, weight, subtags, onToggle }) => {
     return (
-        <div className='w-[480px] h-[50%] pt-10'>
+        <div className=' containerStyle'>
             <div className="relative ">
                 <span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-indigo-500 rounded-lg"></span>
                 <div className="relative p-6 bg-white border-2 border-indigo-500 rounded-lg hover:scale-105 transition duration-500">
@@ -51,7 +51,7 @@ const Card: React.FC<Card> = ({ id, name, description, imageUrl, isSelected, ver
                                         <h2 className="title-font font-medium text-md text-wrap text-gray-900">{version}</h2>
                                         <p className="leading-relaxed">Version</p>
                                     </div>
-                                    <Button variant="contained" color="primary" onClick={onToggle} style={{ backgroundColor: '#6366f1', fontSize: '16px', height: '4rem', position: 'absolute', bottom: 0, right: 0 }}>
+                                    <Button variant="contained" color="primary" onClick={onToggle} style={{ backgroundColor: '#6366f1', fontSize: '1rem', height: '2rem', position: 'absolute', bottom: 0, right: 0 }}>
                                         {isSelected ? 'Désélectionner' : 'Sélectionner'}
                                     </Button>
                                 </div>
@@ -60,7 +60,7 @@ const Card: React.FC<Card> = ({ id, name, description, imageUrl, isSelected, ver
                         <div className='flex justify-start  items-start'>
                             {subtags.map((subtag, subtagIndex) => (
                                 <li key={subtagIndex} className="flex mx-1">
-                                    <span className="p-2 px-3 border-purple-800 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25 dark:bg-purple text-purple-800">
+                                    <span style={{ backgroundColor: '#6366f1', borderColor: '#6366f1', color: 'white' }} className="p-2 px-3 border-purple-800 rounded font-medium hover:bg-transparent hover:border-purple-800 border bg-purple-400/25 dark:bg-purple text-purple-800">
                                         {subtag}
                                     </span>
                                 </li>
