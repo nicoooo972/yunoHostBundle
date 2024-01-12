@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { promisify } from 'util';
 import { spawn, exec } from 'child_process';
+import { EventEmitter } from 'events';
 
 const execPromise = promisify(exec);
 
 @Injectable()
 export class InstallService {
+  private eventEmitter = new EventEmitter();
+
   async installApplication(datas: any[]): Promise<void> {
     try {
       const installedApps = await this.getInstalledApp();
@@ -18,12 +21,13 @@ export class InstallService {
             if (installedApps.includes(appName)) {
               console.error(`L'application ${appName} est déjà installée`);
             } else {
-              const command = `ssh nicoco@dcm1tlg1.nohost.me "sudo yunohost app install ${appName} --args 'domain=${domain}&path=/${appName}&init_main_permission=admins&admin=${admins}&password=${password}'"`;
-              console.log(command);
+              const command = `ssh nicoco@dcm1tlg1.nohost.me "sudo yunohost app install ${appName} --args 'domain=${domain}&path=/${appName}&init_main_permission=admins&admin=${admins}&password=${password}&user_home=false'"`;
               const childProcess = spawn('bash', ['-c', command]);
 
               childProcess.stdout.on('data', (data) => {
+                const outputData = data.toString();
                 console.log(`Données de sortie : ${data}`);
+                this.eventEmitter.emit('update', outputData);
               });
 
               childProcess.stderr.on('data', (data) => {
@@ -51,6 +55,10 @@ export class InstallService {
         error.message,
       );
     }
+  }
+
+  get Event() {
+    return this.eventEmitter;
   }
 
   async getAdmin(): Promise<string> {

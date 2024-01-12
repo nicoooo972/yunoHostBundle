@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, Sse } from '@nestjs/common';
 import { InstallService } from './install.service';
 import { Response } from 'express';
+import { Observable } from 'rxjs';
 
 @Controller('install')
 export class InstallController {
@@ -52,5 +53,14 @@ export class InstallController {
     } catch (error) {
       res.status(500).json({ status: 500, error: error.message });
     }
+  }
+
+  @Sse('update')
+  update() {
+    return new Observable((subscriber) => {
+      this.install.Event.on('update', (datas) => {
+        subscriber.next({ datas });
+      });
+    });
   }
 }

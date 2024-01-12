@@ -7,6 +7,6 @@ import { InstallService } from './install/install.service';
 @Module({
   imports: [],
   controllers: [AppController, InstallController],
-  providers: [AppService, AppService, InstallService],
+  providers: [AppService, InstallService],
 })
 export class AppModule {}
