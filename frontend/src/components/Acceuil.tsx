@@ -8,7 +8,7 @@ interface AccueilProps {
 
 const Accueil: React.FC<AccueilProps> = ({ scrollToCartes }) => {
     const [randomColor, setRandomColor] = useState<string>('white'); // Couleur initiale
-    const colors = ['#C6F', '#4285f4', '#0f9d58', '#f4b400'];
+    const colors = ['#C6F'];
     useEffect(() => {
         // Sélectionnez une couleur aléatoire parmi la liste des couleurs
         const randomIndex = Math.floor(Math.random() * colors.length);

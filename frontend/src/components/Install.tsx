@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import { TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 interface InstallForm {
     onClose: () => void;
@@ -21,6 +22,8 @@ const Install: React.FC<InstallForm> = ({ onClose, open, selectedApps }) => {
     const [password, setPassword] = useState<string>('');
     const [selectedAdmin, setSelectedAdmin] = useState<string>('');
     const [selectedDomain, setSelectedDomain] = useState<string>('');
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getAdminsData = async () => {
@@ -41,16 +44,48 @@ const Install: React.FC<InstallForm> = ({ onClose, open, selectedApps }) => {
         getAdminsData();
     }, []);
 
-    const handleSubmit = () => {
-        const formData = {
-            name: selectedApps,
-            admin: selectedAdmin,
-            domain: selectedDomain,
-            password: password,
+    const handleSubmit = async () => {
+        const formData = [
+            {
+              name: selectedApps,
+              admins: selectedAdmin,
+              domain: selectedDomain,
+              password: password,
+            },
+          ];
+          try {
+            const response = await fetch('http://localhost:3000/install', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),
+            });
+            console.log(response);
+      
+            if (response.ok) {
+              console.log('Formulaire soumis avec les valeurs :', formData);
+              
+              const eventSource = new EventSource('http://localhost:3000/install/update');
+              console.log(eventSource);
+      
+              eventSource.onmessage = (event) => {
+                  console.log("Mise à jour de l'installation:", event.data);
+      
+                  if (event.data.includes('Installation completed')) {
+                      onClose(); 
+                      navigate('/');
+                  }
+              };
+              onClose();
+              navigate('/');    
+            } else {
+              console.error('Erreur lors de la soumission du formulaire');
+            }
+          } catch (error) {
+            console.error('Erreur lors de la soumission du formulaire :', error);
+          }
         };
-        console.log('Formulaire soumis avec les valeurs :', formData);
-        onClose();
-    };
 
     return (
         <Dialog open={open} onClose={onClose}>
