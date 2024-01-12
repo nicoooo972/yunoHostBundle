@@ -23,19 +23,14 @@ const Install: React.FC<InstallForm> = ({ onClose, open, selectedApps }) => {
     const [selectedDomain, setSelectedDomain] = useState<string>('');
 
     useEffect(() => {
-        // Récupération des noms et des domaines de la route get
         const getAdminsData = async () => {
             try {
-                const response = await fetch(
-                    'http://localhost:3000/install/users-admin',
-                );
-                console.log(response);
+                const response = await fetch('http://localhost:3000/install/users-admin');
                 const data = await response.json();
 
                 setAdmins(Object.keys(data.admins.users));
 
                 const response2 = await fetch('http://localhost:3000/install/domain');
-                console.log(response2);
                 const data2 = await response2.json();
 
                 setDomains(data2.domain.domains);
@@ -43,8 +38,9 @@ const Install: React.FC<InstallForm> = ({ onClose, open, selectedApps }) => {
                 console.error('Error fetching data:', error);
             }
         };
-        getAdminsData(); // Call  the fetchData function directly
+        getAdminsData();
     }, []);
+
     const handleSubmit = () => {
         const formData = {
             name: selectedApps,
@@ -58,53 +54,67 @@ const Install: React.FC<InstallForm> = ({ onClose, open, selectedApps }) => {
 
     return (
         <Dialog open={open} onClose={onClose}>
-            <DialogTitle>Remplissez le formulaire d'installation</DialogTitle>
-            <DialogContent>
-                {/* Using InputLabel to provide a label for the Select */}
-                <InputLabel htmlFor="nom-administrateur">
-                    Nom de l'administrateur
-                </InputLabel>
-                <Select
-                    variant="outlined"
-                    fullWidth
-                    value={selectedAdmin}
-                    onChange={(e) => setSelectedAdmin(e.target.value as string)}
-                >
-                    {admins.map((user, index) => (
-                        <MenuItem key={index} value={user}>
-                            {user}
-                        </MenuItem>
-                    ))}
-                </Select>
-                <InputLabel htmlFor="domain">Nom du domaine</InputLabel>
-                <Select
-                    variant="outlined"
-                    fullWidth
-                    value={selectedDomain}
-                    onChange={(e) => setSelectedDomain(e.target.value as string)}
-                >
-                    {domains.map((main, index) => (
-                        <MenuItem key={index} value={main}>
-                            {main}
-                        </MenuItem>
-                    ))}
-                </Select>
-                <InputLabel htmlFor="password">Mot de passe</InputLabel>
-                <TextField
-                    label="Mot de passe"
-                    variant="outlined"
-                    fullWidth
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    margin="normal"
-                />
+            <DialogTitle style={{ backgroundColor: '#6366f1', color: 'white', height: '60px', display: 'flex', alignItems: 'center' }}>
+                Remplissez le formulaire d'installation
+            </DialogTitle>
+            <DialogContent style={{ marginTop: '20px' }}>
+                <div style={{ marginBottom: '15px' }}>
+                    <InputLabel style={{ color: 'black' }} htmlFor="nom-administrateur">
+                        Nom de l'administrateur
+                    </InputLabel>
+                    <Select
+                        variant="outlined"
+                        fullWidth
+                        value={selectedAdmin}
+                        onChange={(e) => setSelectedAdmin(e.target.value as string)}
+                    >
+                        {admins.map((user, index) => (
+                            <MenuItem key={index} value={user}>
+                                {user}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </div>
+
+                <div style={{ marginBottom: '15px' }}>
+                    <InputLabel style={{ color: 'black' }} htmlFor="domain">
+                        Nom du domaine
+                    </InputLabel>
+                    <Select
+                        variant="outlined"
+                        fullWidth
+                        value={selectedDomain}
+                        onChange={(e) => setSelectedDomain(e.target.value as string)}
+                    >
+                        {domains.map((main, index) => (
+                            <MenuItem key={index} value={main}>
+                                {main}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </div>
+
+                <div style={{ marginBottom: '15px' }}>
+                    <InputLabel style={{ color: 'black' }} htmlFor="password">
+                        Mot de passe
+                    </InputLabel>
+                    <TextField
+                        label="Mot de passe"
+                        variant="outlined"
+                        fullWidth
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        margin="normal"
+                    />
+                </div>
             </DialogContent>
+
             <DialogActions>
-                <Button onClick={onClose} color="primary">
+                <Button onClick={onClose} style={{ backgroundColor: '#6366f1', fontSize: '16px', height: '2rem', color: 'white' }}>
                     Annuler
                 </Button>
-                <Button onClick={handleSubmit} color="primary">
+                <Button onClick={handleSubmit} style={{ backgroundColor: '#6366f1', fontSize: '16px', height: '2rem', color: 'white' }}>
                     Valider
                 </Button>
             </DialogActions>

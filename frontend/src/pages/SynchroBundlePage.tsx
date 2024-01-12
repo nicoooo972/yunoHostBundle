@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Accueil from '../components/Acceuil';
-import Cartes from '../components/Cartes';
+import AllCard from '../components/AllCard';
 
 
 
@@ -20,7 +20,7 @@ const Synchro: React.FC = () => {
             </div>
             <div ref={cardRef}>
 
-                <Cartes />
+                <AllCard />
             </div>
         </div><div className="flex py-5 m-auto text-gray-800 text-sm flex-col items-center border-t max-w-screen-xl mt-10 flex-1">
                 <footer className='flex flex-shrink-0'>

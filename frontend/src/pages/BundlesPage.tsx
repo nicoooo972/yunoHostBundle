@@ -62,7 +62,7 @@ const BundlesPage: React.FC = () => {
                                         className="relative flex h-9 w-full items-center justify-center px-8 before:absolute 
                                       before:inset-0 before:rounded-full before:bg-teal-400 before:transition before:duration-300 
                                       hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
-                                        <span className="relative text-sm font-semibold text-white">
+                                        <span className="relative text-sm font-semibold text-white" >
                                             Lancer le bundle
                                         </span>
                                     </a>
@@ -72,11 +72,8 @@ const BundlesPage: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
 
-
-
-            <Container>
+            <Container className='cartes-container'>
                 <Grid container spacing={3}>
                     {data.map((application, index) => (
                         <Grid item key={index} xs={12} sm={6} md={4} lg={4}>
@@ -90,6 +87,10 @@ const BundlesPage: React.FC = () => {
                     ))}
                 </Grid>
             </Container>
+        </div>
+
+
+
 
         </>
     );
