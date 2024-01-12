@@ -43,7 +43,7 @@ L'application est construite sur une architecture technique et applicative N-tie
 * Le middle-tier : une api réalisée qui fera la liaison entre le client et le serveur web
 * Le serveur Yunohost : serveur web de Yunohost où sera installé les applications
 
-<img alt="" src="C:\Users\Alan\Documents\yunohost\yunoHostBundle\Archi_Yunohost.png" width="350"/>
+<img alt="" src="/Archi_Yunohost.png" width="350"/>
 
 ### Le client (Front-End)
 L'application web utilise une architecture basée sur le modèle ReactJs.
