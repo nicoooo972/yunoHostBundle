@@ -46,7 +46,7 @@ const BundlesInstaller: React.FC = () => {
               }}
             >
               <div>
-                <h3>{application}</h3>
+                <h3>{application.application}</h3>
               </div>
             </div>
           </div>
